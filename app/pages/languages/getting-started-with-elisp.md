@@ -1,6 +1,6 @@
 ---
 title: "Emacs Lisp"
-slug: "getting-started-with-emacs-lisp"
+slug: "getting-started-with-elisp"
 category: "languages"
 ordinal: 520
 ---
@@ -77,6 +77,21 @@ regression/unit testing. Tests can be run several ways:
 2. From the terminal, in batch mode, with
 `emacs -batch -l ert -l my-test.el -f ert-run-tests-batch-and-exit`
 3. Other options can be found in the docs, `C-h i m ert RET`
+
+Interactive testing is great while you're working on an exercise, but batch mode
+testing is preferable for when you want to check that an exercise is ready for
+submission. The above command is a bit unwieldy, so if you like:
+
+1. Create a file on your `$PATH` (probably in `~/bin`) called `ert-run`
+2. The contents of the file should be as follows:
+```bash
+#!/usr/bin/sh
+emacs -batch -l ert -l $1 -f ert-run-tests-batch-and-exit
+```
+3. Make the file executable with `chmod +x ert-run`
+
+You should be able to simply call `ert-run exercise-test.el` and run the
+tests in batch mode.
 
 ### Working on exercises
 
